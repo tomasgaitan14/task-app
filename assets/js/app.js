@@ -14,10 +14,28 @@ window.addEventListener('load', () => {
 
     const capturarValor = () => {
         const tareaNombre = inputCrear.value.trim();
-        (tareaNombre.length) ? mostrarTareaHTML(tareaNombre) : alert('Debe ingresar alguna tarea');
+        (tareaNombre.length) ? mostrarTareaHTML(tareaNombre) : Swal.fire({ title: 'Ups! Something is wrong',text: 'Enter any task',icon: 'info',confirmButtonText: 'Accept'
+          })
     }
 
     const mostrarTareaHTML = (tarea) => {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          })
+          
+          Toast.fire({
+            icon: 'success',
+            title: 'Task successfully added'
+          })
+
         const liHTML = `<li><strong>${tarea}</strong><i class="fas fa-minus-circle borrar"></i></li>`
         listaTareas.innerHTML += liHTML;
     }
@@ -48,9 +66,25 @@ window.addEventListener('load', () => {
 
     listaTareas.addEventListener('click', (e) => {
         if (e.target.classList.contains('borrar')) {
-
             e.target.parentElement.remove()
         }
         inputBuscar.value = '';
+
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          })
+          
+          Toast.fire({
+            icon: 'success',
+            title: 'Task successfully deleted'
+          })
     })
 })
