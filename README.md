@@ -1,13 +1,15 @@
 # Task App ☑️
 Functions
 
-Add and delete new tasks
+- Add and delete new tasks
 
 Developed with
 
-HTML
-CSS
-JavaScript
+- HTML
+- CSS
+- JavaScript
+
 Styles
 
-Boostrap 5
+- Boostrap 5
+- CSS3
